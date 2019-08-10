@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JkhXUnitAssertGenerator", "JkhXUnitAssertGenerator\JkhXUnitAssertGenerator.csproj", "{51EA824F-B5CD-42B3-8736-6D48D671F1F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoXUnitAsserts", "DemoXUnitAsserts\DemoXUnitAsserts.csproj", "{78714F57-7741-4060-B8D1-3135E9A4A011}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoTests", "DemoXUnitAsserts\DemoTests.csproj", "{78714F57-7741-4060-B8D1-3135E9A4A011}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A31E0638-1C08-420D-9990-B0DEADEB2FD6}"
 	ProjectSection(SolutionItems) = preProject
