@@ -1,7 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Simple Code-Generator for creating C# XUnit tests and other C# sundries</Description>
+    <Company>Jeoffman</Company>
+    <Authors>Jeoffman</Authors>
+    <Copyright>Copyright © 2019</Copyright>
   </PropertyGroup>
 
 </Project>
