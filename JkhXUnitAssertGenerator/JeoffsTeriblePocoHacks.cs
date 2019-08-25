@@ -1,9 +1,9 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 
 namespace JkhXUnitAssertGenerator
@@ -16,7 +16,7 @@ namespace JkhXUnitAssertGenerator
             retval.AppendLine("{");
 
             var objectType = typeof(T);
-            var props = objectType.GetProperties();
+            var props = objectType.GetProperties(BindingFlags.Instance | BindingFlags.Public);
             foreach (T item in listOfThings)
             {
                 retval.Append($"new {item.GetType().Name} {{ ");
@@ -49,15 +49,17 @@ namespace JkhXUnitAssertGenerator
                     case TypeCode.SByte:
                     case TypeCode.Byte:
                     case TypeCode.Int16:
-                    case TypeCode.UInt16:
                     case TypeCode.Int32:
-                    case TypeCode.UInt32:
                     case TypeCode.Int64:
-                    case TypeCode.UInt64:
                     case TypeCode.Single:
                     case TypeCode.Double:
                     case TypeCode.Decimal:
                         retval = $"{value}";
+                        break;
+                    case TypeCode.UInt16:
+                    case TypeCode.UInt32:
+                    case TypeCode.UInt64:
+                        retval = $"{value}U";
                         break;
                     case TypeCode.DateTime:
                         DateTime dateTimeValue = (DateTime)value;
@@ -79,14 +81,15 @@ namespace JkhXUnitAssertGenerator
                                         StringBuilder bigOldRetval = new StringBuilder();
                                         IEnumerable<object> e1 = enu.Cast<object>();
                                         object o = e1.First();
-                                        if(value.GetType().IsArray)
+                                        if (value.GetType().IsArray)
                                             bigOldRetval.Append($"new {GetCSharpTypeName(o.GetType())}[] {{");
                                         else
                                             bigOldRetval.Append($"new List<{GetCSharpTypeName(o.GetType())}> {{");
+
                                         for (int i = 0; i < e1.Count(); i++)
                                         {
                                             object obj = e1.Skip(i).First();
-                                            if(i > 0)
+                                            if (i > 0)
                                                 bigOldRetval.Append(",");
                                             bigOldRetval.Append($"{GetQuotedValue(obj)}");
                                         }

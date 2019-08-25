@@ -26,10 +26,15 @@ namespace DemoTests
                 Timestamp = DateTime.MinValue,
                 SimpleChildPocos = new ReadOnlyCollection<SimpleChildPoco>(new List<SimpleChildPoco>
                 {
-                    new SimpleChildPoco { Text = "Marie", Timestamp = DateTime.Parse("2019-08-03T20:56:09.6523099Z"), ListOfText = new List<string> { "child1", "child2" }, Float=102.3 }, //UTC time
+                    new SimpleChildPoco { Text = "Marie", Timestamp = DateTime.Parse("2019-08-03T20:56:09.6523099Z"), ListOfText = new List<string> { "child1", "child2", null }, Float=102.3 }, //UTC time
                     new SimpleChildPoco { Text = "Charlie", Timestamp = DateTime.Parse("2019-08-03T15:56:09.6523570-05:00"), Boolean = true },  //local time
                     GenerateSimpleTestSubject(),
                 }),
+                EnumThing = EnumThing.One,
+                UnsignedAndUnsung = 19,
+                NullString = null,
+                NullObject = null,
+
             };
             return testSubject;
         }
@@ -51,6 +56,10 @@ namespace DemoTests
                 ListOfNumbers = new List<int> { 100, 101, 102 },
                 ListOfChars = new List<char> { 'z', 'x' },
                 ListOfBools = new bool[] { false, true, false },
+                UnsignedThing = 22,
+                NullString = null,
+                NullObject = null,
+                NullList = null
             };
         }
     }
@@ -72,6 +81,17 @@ namespace DemoTests
         public IList<char> ListOfChars { get; set; }
         public bool[] ArrayOfBools { get; set; }
         public ReadOnlyCollection<SimpleChildPoco> SimpleChildPocos { get; set; }
+        public EnumThing EnumThing { get; set; }
+        public uint UnsignedAndUnsung { get; set; }
+        public string NullString { get; set; }
+        public object NullObject { get; set; }
+    }
+
+    public enum EnumThing
+    {
+        Zero,
+        One,
+        Two
     }
 
     public class SimpleChildPoco
@@ -89,5 +109,11 @@ namespace DemoTests
         public IList<int> ListOfNumbers { get; set; }
         public IList<char> ListOfChars { get; set; }
         public bool[] ListOfBools { get; set; }
+        public uint UnsignedThing { get; set; }
+        public static string StaticPropsGetSkipped { get; set; }
+        public string NullString { get; set; }
+        public object NullObject { get; set; }
+        public IList<string> NullList { get; set; }
+
     }
 }

@@ -51,6 +51,9 @@ namespace DemoTests
 
             Assert.Equal("child1", thingToWriteTestsFor.SimpleChildPocos[0].ListOfText[0]);
             Assert.Equal("child2", thingToWriteTestsFor.SimpleChildPocos[0].ListOfText[1]);
+            Assert.Null(thingToWriteTestsFor.SimpleChildPocos[0].ListOfText[2]);
+            Assert.Equal(0U, thingToWriteTestsFor.SimpleChildPocos[0].UnsignedThing);
+            Assert.Null(thingToWriteTestsFor.SimpleChildPocos[0].NullString);
 
             Assert.Equal(0, thingToWriteTestsFor.SimpleChildPocos[1].Number);
             Assert.Equal("Charlie", thingToWriteTestsFor.SimpleChildPocos[1].Text);
@@ -58,6 +61,8 @@ namespace DemoTests
             Assert.True(thingToWriteTestsFor.SimpleChildPocos[1].Boolean);
             Assert.Equal(0, thingToWriteTestsFor.SimpleChildPocos[1].Float);
             Assert.Equal(DateTime.Parse("2019-08-03T15:56:09.6523570-05:00"), thingToWriteTestsFor.SimpleChildPocos[1].Timestamp);
+            Assert.Equal(0U, thingToWriteTestsFor.SimpleChildPocos[1].UnsignedThing);
+            Assert.Null(thingToWriteTestsFor.SimpleChildPocos[1].NullString);
 
             Assert.Equal(42, thingToWriteTestsFor.SimpleChildPocos[2].Number);
             Assert.Equal("Marie", thingToWriteTestsFor.SimpleChildPocos[2].Text);
@@ -81,6 +86,12 @@ namespace DemoTests
             Assert.False(thingToWriteTestsFor.SimpleChildPocos[2].ListOfBools[0]);
             Assert.True(thingToWriteTestsFor.SimpleChildPocos[2].ListOfBools[1]);
             Assert.False(thingToWriteTestsFor.SimpleChildPocos[2].ListOfBools[2]);
+            Assert.Equal(22U, thingToWriteTestsFor.SimpleChildPocos[2].UnsignedThing);
+            Assert.Null(thingToWriteTestsFor.SimpleChildPocos[2].NullString);
+
+            Assert.Equal(EnumThing.One, thingToWriteTestsFor.EnumThing);
+            Assert.Equal(19U, thingToWriteTestsFor.UnsignedAndUnsung);
+            Assert.Null(thingToWriteTestsFor.NullString);
         }
     }
 }
